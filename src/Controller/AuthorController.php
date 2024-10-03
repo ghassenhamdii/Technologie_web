@@ -26,7 +26,7 @@ class AuthorController extends AbstractController
        ];
        return $this->render('author/listAuthors.html.twig',
        array(
-           'authors1'=>$authors
+           'authors'=>$authors
        ));
    }
 }
