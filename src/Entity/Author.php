@@ -25,6 +25,9 @@ class Author
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
+    #[ORM\ManyToOne(inversedBy: 'authors')]
+    private ?Library $library = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Author
     public function setAddress(?string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getLibrary(): ?library
+    {
+        return $this->library;
+    }
+
+    public function setLibrary(?library $library): static
+    {
+        $this->library = $library;
 
         return $this;
     }

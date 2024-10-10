@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Bibliothèques</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4 mb-4">Liste des Bibliothèques</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Website</th>
+                <th>Date de Création</th>
+                <th>Actions</th> {# Colonne pour les actions #}
+            </tr>
+        </thead>
+        <tbody>
+            {% for library in listl %}
+                <tr>
+                    <td>{{ library.id }}</td>
+                    <td>{{ library.name }}</td>
+                    <td>{{ library.website }}</td>
+                    <td>{{ library.dateCreation ? library.dateCreation|date('Y-m-d') : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ path('app_edit_Libraryp', {'id': library.id}) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ path('app_crud_delete', {'id': library.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette bibliothèque ?')">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# Bouton pour ajouter une nouvelle bibliothèque #}
+    <a href="{{ path('app_new_Libraryp') }}" class="btn btn-success">Ajouter une Bibliothèque</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

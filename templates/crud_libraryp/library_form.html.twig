@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter/Modifier Bibliothèque</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4 mb-4">{{ library ? 'Modifier' : 'Ajouter' }} une Bibliothèque</h1>
+
+    {# Formulaire pour ajouter ou éditer une bibliothèque #}
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.website) }}
+            {{ form_widget(form.website, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.dateCreation) }}
+            {{ form_widget(form.dateCreation, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">{{ library ? 'Modifier' : 'Ajouter' }}</button>
+    {{ form_end(form) }}
+</div>
+</body>
+</html>
